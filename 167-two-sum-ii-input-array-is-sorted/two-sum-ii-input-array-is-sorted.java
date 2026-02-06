@@ -1,14 +1,19 @@
 class Solution {
     public int[] twoSum(int[] numbers, int target) {
-        int left=0,right=numbers.length-1;
-        for(int i=0;i<=numbers.length;i++){
-            if(numbers[left]+numbers[right]<target)
-                    left++;
-            else if(numbers[left]+numbers[right]>target) 
-                    right--;
-            else break;
-        }
-            return new int[]{left + 1, right + 1};  
+        int l = 0, r = numbers.length - 1;
 
+        while (l < r) {
+            int sum = numbers[l] + numbers[r];
+
+            if (sum == target) {
+                return new int[]{l + 1, r + 1}; // 1-based index
+            } else if (sum < target) {
+                l++;
+            } else {
+                r--;
+            }
+        }
+
+        return new int[]{-1, -1};
     }
 }
